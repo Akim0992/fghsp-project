@@ -4,8 +4,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import roche.fghsp.model.Product;
 
-public interface ProductRepository extends CrudRepository<Product, Long>{
+public interface ProductRepository extends CrudRepository<Product, String>{
 	
+	public Product findById(String id);
 	
 
 }

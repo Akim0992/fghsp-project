@@ -1,6 +1,7 @@
 package roche.fghsp.model;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +13,11 @@ import javax.validation.constraints.Size;
 @Entity
 public class Product {
 	
+
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+	private String id;
 	
 	@NotNull
 	@Size(min=2, max=30)
@@ -23,12 +25,17 @@ public class Product {
 	private String description;
 	private BigDecimal price;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	
+	public void setId(String id) {
+		
+		
+		
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}

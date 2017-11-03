@@ -1,5 +1,7 @@
 package roche.fghsp.controller;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,12 @@ public class ProductController {
 
 		if(bindingResult.hasErrors())
 			return "create";
+
+		String idTemp;
+		
+		idTemp = UUID.randomUUID().toString();
+		System.out.println(idTemp);
+		product.setId(idTemp);
 		
 		Product saveProduct = productRepository.save(product);
 		
@@ -46,13 +54,13 @@ public class ProductController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String deleteProduct(@PathVariable("id") Long id){
+	public String deleteProduct(@PathVariable("id") String id){
 		productRepository.delete(id);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editProductForm(@PathVariable("id") Long id, Model model){
+	public String editProductForm(@PathVariable("id") String id, Model model){
 		
 		Product product = productRepository.findOne(id);
 		model.addAttribute("product", product);
@@ -62,6 +70,7 @@ public class ProductController {
 	
 	@PostMapping("/edit")
 	public String editProduct(@Valid Product product){
+	
 		System.out.println("SAVE EDIT PRODUCT WITH ID" +product.getId());
 		productRepository.save(product);		
 		return "redirect:/";
