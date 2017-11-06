@@ -11,35 +11,37 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import roche.fghsp.model.Product;
 import roche.fghsp.repository.ProductRepository;
 
 @Controller
+@RequestMapping("/test")
 public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping("/")
+	@GetMapping({"", "/"})
 	public String listProducts(Model model) {
 
 		Iterable<Product> list = productRepository.findAll();
 		model.addAttribute("products", list);
-		return "list";
+		return "/list";
 	}
 
 	@GetMapping("/create")
 	public String createProductForm(Model model) {
 		model.addAttribute("product", new Product());
-		return "create";
+		return "/create";
 	}
 
 	@PostMapping("/create")
 	public String createProduct(@Valid Product product, BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors())
-			return "create";
+			return "/create";
 
 		String idTemp;
 		
@@ -50,13 +52,13 @@ public class ProductController {
 		Product saveProduct = productRepository.save(product);
 		
 		System.out.println("NEW SAVED PRODUCT WITH ID : "+saveProduct.getId());
-		return "redirect:/";
+		return "redirect:/test/";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable("id") String id){
 		productRepository.delete(id);
-		return "redirect:/";
+		return "redirect:/test/";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -65,7 +67,7 @@ public class ProductController {
 		Product product = productRepository.findOne(id);
 		model.addAttribute("product", product);
 		
-		return "edit";
+		return "/edit";
 	}
 	
 	@PostMapping("/edit")
@@ -73,7 +75,7 @@ public class ProductController {
 	
 		System.out.println("SAVE EDIT PRODUCT WITH ID" +product.getId());
 		productRepository.save(product);		
-		return "redirect:/";
+		return "redirect:/test/";
 	}
 	
 }
