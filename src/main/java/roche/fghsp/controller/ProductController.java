@@ -28,20 +28,20 @@ public class ProductController {
 
 		Iterable<Product> list = productRepository.findAll();
 		model.addAttribute("products", list);
-		return "/list";
+		return "test/list";
 	}
 
 	@GetMapping("/create")
 	public String createProductForm(Model model) {
 		model.addAttribute("product", new Product());
-		return "/create";
+		return "test/create";
 	}
 
 	@PostMapping("/create")
 	public String createProduct(@Valid Product product, BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors())
-			return "/create";
+			return "test/create";
 
 		String idTemp;
 		
@@ -67,7 +67,7 @@ public class ProductController {
 		Product product = productRepository.findOne(id);
 		model.addAttribute("product", product);
 		
-		return "/edit";
+		return "test/edit";
 	}
 	
 	@PostMapping("/edit")
