@@ -1,8 +1,20 @@
 package roche.fghsp.model;
 
-import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Contact {
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+
+@Entity
+@Table(name="contact") 
+public class Contact implements Serializable {
 	@Id
 	private String id;
 	
@@ -18,6 +30,11 @@ public class Contact {
 	
 	private String department;
 	
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "contact")
+    private Set<Solution> solution = new HashSet<Solution>();
+    
+    
+	@NotNull
 	private String roche_id;
 	
 	public String getId() {
@@ -125,4 +142,6 @@ public class Contact {
 	public void setRoche_id(String roche_id) {
 		this.roche_id = roche_id;
 	}
+	
+	
 }

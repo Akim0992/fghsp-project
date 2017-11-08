@@ -1,5 +1,6 @@
 package roche.fghsp.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 
@@ -13,7 +14,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="product") 
-public class Product {
+public class Product implements Serializable{
 	
 
 	

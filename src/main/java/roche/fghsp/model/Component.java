@@ -1,9 +1,16 @@
 package roche.fghsp.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-public class Component {
+@Entity
+@Table(name="component") 
+public class Component implements Serializable {
+	
 	@Id
 	private String id;
 	

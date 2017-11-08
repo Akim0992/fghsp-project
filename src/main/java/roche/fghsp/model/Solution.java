@@ -1,13 +1,22 @@
 package roche.fghsp.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="solution") 
-public class Solution {
+public class Solution implements Serializable{
 	
 	@Id
 	private String id;
@@ -34,6 +43,30 @@ public class Solution {
 	
 	private String business_capabilities;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_owner_solution",
+            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    )
+    private Set<Contact> owner = new HashSet<Contact>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_deputy_solution",
+            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    )
+    private Set<Contact> deputy = new HashSet<Contact>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_bo_solution",
+            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    )
+    private Set<Contact> bo = new HashSet<Contact>();
+    
 	public String getId() {
 		return id;
 	}
@@ -121,6 +154,32 @@ public class Solution {
 	public void setBusiness_capabilities(String business_capabilities) {
 		this.business_capabilities = business_capabilities;
 	}
+
+	public Set<Contact> getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Set<Contact> owner) {
+		this.owner = owner;
+	}
+
+	public Set<Contact> getDeputy() {
+		return deputy;
+	}
+
+	public void setDeputy(Set<Contact> deputy) {
+		this.deputy = deputy;
+	}
+
+	public Set<Contact> getBo() {
+		return bo;
+	}
+
+	public void setBo(Set<Contact> bo) {
+		this.bo = bo;
+	}
+	
+	
 	
 	
 	

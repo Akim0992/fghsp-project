@@ -7,15 +7,8 @@
 		<title>FGH Solutions</title>
 		
 		<!-- Bootstrap core CSS -->
-		<link href="/vendor/bootstrap/css/bootstrap-reponsive.css" rel="stylesheet" type="text/css" />
-		<link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="/vendor/bootstrap/css/bootstrap-reponsive.min.css" rel="stylesheet" type="text/css" />
 		
-		
-		
-		<!-- th:href="@{/css/style.css}"  Custom styles for this template -->
-    	<link href="/vendor/bootstrap/css/heroic-features.css" rel="stylesheet" />
 	
 	</head>
 	
@@ -36,16 +29,16 @@
 							</div>
 							
 							<div class='card-footer'>
-								<font size='2'>
-									<div class="card-title" th:text="${solution.name}"></div>
-								</font>
+								
+									<b><div class="card-title" th:text="${solution.name}"></div></b>
+								
 								
 								<font size='1'>								
 									<p class='card-text'><b>Solution Owner:</b> <br/>Akim Neghouche</p>
 									<p class='card-text'><b>HPSM-Name:</b> <br/><text class="solution-name-hpsm" th:text="${solution.hpsm_name}"></text></p>
 								</font>
 								
-								<a style="margin-top: 10px;" href='component.html?id=" + solutions[i].ID + "' class='btn btn-primary'>Find Out More!</a>
+								<a style="margin-top: 15px;" href='component.html?id=" + solutions[i].ID + "' class='btn btn-primary'>Find Out More!</a>
 								
 							</div>
 						
