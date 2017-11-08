@@ -2,10 +2,10 @@
 <body>
 
 
-	<h1>Listes des produits</h1>
+	<h1>Product list</h1>
 
 
-	<a th:href="@{/test/create}">Créer un produit</a>
+	<a th:href="@{/test/create}">Create produit</a>
 	
 	<div th:if="${#lists.isEmpty(products)}">
 		Il n'existe pas de produits dans la base
@@ -14,8 +14,8 @@
 		<li th:each="product : ${products}"><span th:text="${product.name}"></span>
 			: <span th:text="${product.price}"></span> Euros
 			
-			<a th:href="@{/test/edit/{id}(id=${product.id})}">Editer</a> |
-			<a th:href="@{/test/delete/{id}(id=${product.id})}">Supprimer</a>
+			<a th:href="@{/test/edit/{id}(id=${product.id})}">Edit</a>
+			<a th:href="@{/test/delete/{id}(id=${product.id})}">Delete</a>
 			</li>
 
 	</ul>

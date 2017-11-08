@@ -46,7 +46,7 @@ public class ProductController {
 		String idTemp;
 		
 		idTemp = UUID.randomUUID().toString();
-		System.out.println(idTemp);
+//		System.out.println(idTemp);
 		product.setId(idTemp);
 		
 		Product saveProduct = productRepository.save(product);
@@ -73,7 +73,7 @@ public class ProductController {
 	@PostMapping("/edit")
 	public String editProduct(@Valid Product product){
 	
-		System.out.println("SAVE EDIT PRODUCT WITH ID" +product.getId());
+		System.out.println("SAVE EDIT PRODUCT WITH ID : " +product.getId());
 		productRepository.save(product);		
 		return "redirect:/test/";
 	}
