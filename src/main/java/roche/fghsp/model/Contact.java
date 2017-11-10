@@ -30,8 +30,8 @@ public class Contact implements Serializable {
 	
 	private String department;
 	
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "contact")
-    private Set<Solution> solution = new HashSet<Solution>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "owners")
+    private Set<Solution> solutions = new HashSet<Solution>();
     
     
 	@NotNull
@@ -142,6 +142,15 @@ public class Contact implements Serializable {
 	public void setRoche_id(String roche_id) {
 		this.roche_id = roche_id;
 	}
+
+	public Set<Solution> getSolution() {
+		return solutions;
+	}
+
+	public void setSolution(Set<Solution> solutionSet) {
+		this.solutions = solutionSet;
+	}
+	
 	
 	
 }

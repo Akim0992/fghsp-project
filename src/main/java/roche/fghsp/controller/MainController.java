@@ -20,7 +20,11 @@ public class MainController {
     
     @GetMapping({"", "/", "/home", "/home/"})
     public String index(Model model) {
+//        model.addAttribute("solutions", (Iterable<Solution>) solRep.findAll());
+        
+    	System.out.print("solutions: " + solRep.count() + "\n");
         model.addAttribute("solutions", (Iterable<Solution>) solRep.findAll());
+//        model.addAttribute("solutions", (Iterable<Object[]>) solRep.findSolution());
         return "index";
     }
 

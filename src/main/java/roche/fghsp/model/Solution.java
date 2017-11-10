@@ -46,26 +46,27 @@ public class Solution implements Serializable{
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "is_owner_solution",
-            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "solution_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
     )
-    private Set<Contact> owner = new HashSet<Contact>();
+    private Set<Contact> owners = new HashSet<Contact>();
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "is_deputy_solution",
-            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    )
-    private Set<Contact> deputy = new HashSet<Contact>();
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "is_bo_solution",
-            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    )
-    private Set<Contact> bo = new HashSet<Contact>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "is_deputy_solution",
+//            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+//    )
+//    private Set<Contact> deputy = new HashSet<Contact>();
+//    
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "is_bo_solution",
+//            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
+//    )
+//    private Set<Contact> bo = new HashSet<Contact>();
     
 	public String getId() {
 		return id;
@@ -155,30 +156,30 @@ public class Solution implements Serializable{
 		this.business_capabilities = business_capabilities;
 	}
 
-	public Set<Contact> getOwner() {
-		return owner;
+	public Set<Contact> getOwners() {
+		return owners;
 	}
 
-	public void setOwner(Set<Contact> owner) {
-		this.owner = owner;
+	public void setOwners(Set<Contact> owners) {
+		this.owners = owners;
 	}
 
-	public Set<Contact> getDeputy() {
-		return deputy;
-	}
-
-	public void setDeputy(Set<Contact> deputy) {
-		this.deputy = deputy;
-	}
-
-	public Set<Contact> getBo() {
-		return bo;
-	}
-
-	public void setBo(Set<Contact> bo) {
-		this.bo = bo;
-	}
-	
+//	public Set<Contact> getDeputy() {
+//		return deputy;
+//	}
+//
+//	public void setDeputy(Set<Contact> deputy) {
+//		this.deputy = deputy;
+//	}
+//
+//	public Set<Contact> getBo() {
+//		return bo;
+//	}
+//
+//	public void setBo(Set<Contact> bo) {
+//		this.bo = bo;
+//	}
+//	
 	
 	
 	

@@ -25,7 +25,8 @@
 						<div class="card">
 						
 							<div class="img-div-container" style="align-content=:center;">
-								<img class="card-img-top" height="200" width="220" th:src="${solution.picture}" alt="picture" />
+								 <!-- <img class="card-img-top" height="200" width="220" th:src="${solution.sol_picture}" alt="picture" /> -->
+								 <img class="card-img-top" height="200" width="220" th:src="${solution.picture}" alt="picture" /> 
 							</div>
 							
 							<div class='card-footer'>
@@ -34,8 +35,16 @@
 								
 								
 								<font size='1'>								
-									<p class='card-text'><b>Solution Owner:</b> <br/>Akim Neghouche</p>
-									<p class='card-text'><b>HPSM-Name:</b> <br/><text class="solution-name-hpsm" th:text="${solution.hpsm_name}"></text></p>
+									<p class='card-text'><b>Solution Owner:</b> <br/>
+									
+									<span th:each="owner,iterStat  : ${solution.owners}">
+        							<span th:text="${owner.name}"/>&nbsp;<span th:text="${owner.surname}"/><th:block th:if="${!iterStat.last}">,</th:block>
+        							</span>
+									<!--<text class="solution-name-hpsm" th:text="${solution.name}"></text>-->
+									
+									</p>
+									
+									<p class='card-text'><b>HPSM-Name:</b> <br/><span class="solution-name-hpsm" th:text="${solution.hpsm_name}"></span></p>
 								</font>
 								
 								<a style="margin-top: 15px;" href='component.html?id=" + solutions[i].ID + "' class='btn btn-primary'>Find Out More!</a>
