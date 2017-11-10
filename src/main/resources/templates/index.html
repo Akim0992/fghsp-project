@@ -47,7 +47,7 @@
 									<p class='card-text'><b>HPSM-Name:</b> <br/><span class="solution-name-hpsm" th:text="${solution.hpsm_name}"></span></p>
 								</font>
 								
-								<a style="margin-top: 15px;" href='component.html?id=" + solutions[i].ID + "' class='btn btn-primary'>Find Out More!</a>
+								<a style="margin-top: 15px;" th:href="@{/solution/details/{id}(id=${solution.id})}" class='btn btn-primary'>Find Out More!</a>
 								
 							</div>
 						
