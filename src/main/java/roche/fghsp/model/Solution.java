@@ -48,25 +48,25 @@ public class Solution implements Serializable{
             name = "is_owner_solution",
             joinColumns = @JoinColumn(name = "solution_id"),
             inverseJoinColumns = @JoinColumn(name = "owner_id")
-    )
+    )// referencedColumnName = "id" not needed here
     private Set<Contact> owners = new HashSet<Contact>();
     
     
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "is_deputy_solution",
-//            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
-//    )
-//    private Set<Contact> deputy = new HashSet<Contact>();
-//    
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "is_bo_solution",
-//            joinColumns = @JoinColumn(name = "solution_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "owner_id", referencedColumnName = "id")
-//    )
-//    private Set<Contact> bo = new HashSet<Contact>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_deputy_solution",
+            joinColumns = @JoinColumn(name = "solution_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
+    )
+    private Set<Contact> deputies = new HashSet<Contact>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_bo_solution",
+            joinColumns = @JoinColumn(name = "solution_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
+    )
+    private Set<Contact> bos = new HashSet<Contact>();
     
 	public String getId() {
 		return id;
@@ -164,24 +164,20 @@ public class Solution implements Serializable{
 		this.owners = owners;
 	}
 
-//	public Set<Contact> getDeputy() {
-//		return deputy;
-//	}
-//
-//	public void setDeputy(Set<Contact> deputy) {
-//		this.deputy = deputy;
-//	}
-//
-//	public Set<Contact> getBo() {
-//		return bo;
-//	}
-//
-//	public void setBo(Set<Contact> bo) {
-//		this.bo = bo;
-//	}
-//	
-	
-	
-	
+	public Set<Contact> getDeputies() {
+		return deputies;
+	}
+
+	public void setDeputies(Set<Contact> deputies) {
+		this.deputies = deputies;
+	}
+
+	public Set<Contact> getBos() {
+		return bos;
+	}
+
+	public void setBos(Set<Contact> bos) {
+		this.bos = bos;
+	}	
 	
 }

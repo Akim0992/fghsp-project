@@ -7,6 +7,7 @@
 	<name>fghsp-project</name>
 	<description>Solution map portal for FGH team</description>
 	<url>http://maven.apache.org</url>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -38,6 +39,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
+			<!--- <artifactId>sqljdbc4</artifactId>
+			<version>4.0</version> --> 
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.0.jre8</version>
 		</dependency>
@@ -48,6 +51,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

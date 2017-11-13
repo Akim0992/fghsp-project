@@ -30,9 +30,16 @@ public class Contact implements Serializable {
 	
 	private String department;
 	
+	private String photo;
+	
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "owners")
-    private Set<Solution> solutions = new HashSet<Solution>();
+    private Set<Solution> isOwnerSolutions = new HashSet<Solution>();
     
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "deputies")
+    private Set<Solution> isDeputySolutions = new HashSet<Solution>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bos")
+    private Set<Solution> isBoSolutions = new HashSet<Solution>();
     
 	@NotNull
 	private String roche_id;
@@ -142,15 +149,39 @@ public class Contact implements Serializable {
 	public void setRoche_id(String roche_id) {
 		this.roche_id = roche_id;
 	}
-
-	public Set<Solution> getSolution() {
-		return solutions;
-	}
-
-	public void setSolution(Set<Solution> solutionSet) {
-		this.solutions = solutionSet;
-	}
 	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public Set<Solution> getIsOwnerSolutions() {
+		return isOwnerSolutions;
+	}
+
+	public void setIsOwnerSolutions(Set<Solution> isOwnerSolutions) {
+		this.isOwnerSolutions = isOwnerSolutions;
+	}
+
+	public Set<Solution> getIsDeputySolutions() {
+		return isDeputySolutions;
+	}
+
+	public void setIsDeputySolutions(Set<Solution> isDeputySolutions) {
+		this.isDeputySolutions = isDeputySolutions;
+	}
+
+	public Set<Solution> getIsBoSolutions() {
+		return isBoSolutions;
+	}
+
+	public void setIsBoSolutions(Set<Solution> isBoSolutions) {
+		this.isBoSolutions = isBoSolutions;
+	}
+
 	
 	
 }

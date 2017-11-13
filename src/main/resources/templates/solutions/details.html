@@ -36,10 +36,51 @@
 	
 	      <!-- Page Features -->
 	      <div class="row text-center solution-container">
-	      
 
-		  
-	      </div>
+			<table class='table  text-left'>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Role</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Location</th>
+						<th>Country</th>
+						<th>Team</th>
+					</tr>
+				</thead>
+								
+				<tbody>
+					<tr th:each="owner : ${solution.owners}">
+						<td><img style="height:60px; width:60px;" th:src="${owner.photo}"/></td>
+						<td>Owner</td>
+						<td><span th:text="${owner.name}"/>&nbsp;<span th:text="${owner.surname}"/></td>
+						<td><a th:href="'mailto:' + ${owner.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><span th:text="${owner.site_location}"/></td>
+						<td><span th:text="${owner.country}"/></td>
+						<td><span th:text="${owner.department}"/></td>
+					</tr>
+					<tr th:each="deputy : ${solution.deputies}">
+						<td><img style="height:60px; width:60px;" th:src="${deputy.photo}"/></td>
+						<td>Deputy</td>
+						<td><span th:text="${deputy.name}"/>&nbsp;<span th:text="${deputy.surname}"/></td>
+						<td><a th:href="'mailto:' + ${deputy.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><span th:text="${deputy.site_location}"/></td>
+						<td><span th:text="${deputy.country}"/></td>
+						<td><span th:text="${deputy.department}"/></td>
+					</tr>
+					<tr th:each="bo : ${solution.bos}">
+						<td><img style="height:60px; width:60px;" th:src="${bo.photo}"/></td>
+						<td>Business Owner</td>
+						<td><span th:text="${bo.name}"/>&nbsp;<span th:text="${bo.surname}"/></td>
+						<td><a th:href="'mailto:' + ${bo.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><span th:text="${bo.site_location}"/></td>
+						<td><span th:text="${bo.country}"/></td>
+						<td><span th:text="${bo.department}"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	      <!-- /.row -->
 	
 	    </div>
