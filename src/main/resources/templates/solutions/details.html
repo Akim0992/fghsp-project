@@ -55,7 +55,7 @@
 						<td><img style="height:60px; width:60px;" th:src="${owner.photo}"/></td>
 						<td>Owner</td>
 						<td><span th:text="${owner.name}"/>&nbsp;<span th:text="${owner.surname}"/></td>
-						<td><a th:href="'mailto:' + ${owner.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><a th:href="'mailto:' + ${owner.email} + '?subject=FGH Solution Portal'" th:text="${owner.email}"></a></td>
 						<td><span th:text="${owner.site_location}"/></td>
 						<td><span th:text="${owner.country}"/></td>
 						<td><span th:text="${owner.department}"/></td>
@@ -64,7 +64,7 @@
 						<td><img style="height:60px; width:60px;" th:src="${deputy.photo}"/></td>
 						<td>Deputy</td>
 						<td><span th:text="${deputy.name}"/>&nbsp;<span th:text="${deputy.surname}"/></td>
-						<td><a th:href="'mailto:' + ${deputy.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><a th:href="'mailto:' + ${deputy.email} + '?subject=FGH Solution Portal'" th:text="${deputy.email}"></a></td>
 						<td><span th:text="${deputy.site_location}"/></td>
 						<td><span th:text="${deputy.country}"/></td>
 						<td><span th:text="${deputy.department}"/></td>
@@ -73,7 +73,7 @@
 						<td><img style="height:60px; width:60px;" th:src="${bo.photo}"/></td>
 						<td>Business Owner</td>
 						<td><span th:text="${bo.name}"/>&nbsp;<span th:text="${bo.surname}"/></td>
-						<td><a th:href="'mailto:' + ${bo.email} + '?subject=FGH Solution Portal'"></a></td>
+						<td><a th:href="'mailto:' + ${bo.email} + '?subject=FGH Solution Portal'" th:text="${bo.email}"></a></td>
 						<td><span th:text="${bo.site_location}"/></td>
 						<td><span th:text="${bo.country}"/></td>
 						<td><span th:text="${bo.department}"/></td>

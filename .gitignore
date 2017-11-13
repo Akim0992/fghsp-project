@@ -1,0 +1,7 @@
+*.class
+*.jar
+target/
+WebContent/
+.settings/
+target/application.properties
+*.class
