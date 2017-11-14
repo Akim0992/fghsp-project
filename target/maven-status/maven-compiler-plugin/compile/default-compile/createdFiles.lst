@@ -1,0 +1,8 @@
+roche\fghsp\repository\SolutionRepository.class
+roche\fghsp\controller\MainController.class
+roche\fghsp\repository\ProductRepository.class
+roche\fghsp\Application.class
+roche\fghsp\model\Product.class
+roche\fghsp\controller\SolutionController.class
+roche\fghsp\model\Solution.class
+roche\fghsp\controller\ProductController.class

@@ -68,6 +68,14 @@ public class Solution implements Serializable{
     )
     private Set<Contact> bos = new HashSet<Contact>();
     
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "sc_relationship",
+            joinColumns = @JoinColumn(name = "solution_id"),
+            inverseJoinColumns = @JoinColumn(name = "component_id")
+    )
+    private Set<Component> components = new HashSet<Component>();
+    
 	public String getId() {
 		return id;
 	}
@@ -178,6 +186,16 @@ public class Solution implements Serializable{
 
 	public void setBos(Set<Contact> bos) {
 		this.bos = bos;
+	}
+
+	public Set<Component> getComponents() {
+		return components;
+	}
+
+	public void setComponents(Set<Component> components) {
+		this.components = components;
 	}	
+	
+	
 	
 }

@@ -28,6 +28,7 @@
 					<span th:text="${solution.name}" />
 				</h3>
 				<p class='lead'>
+					<div class="no-content" th:if="${solution.description == ''}">No description available</div>
 					<span th:text="${solution.description}" />
 				</p>
 			</div>
@@ -80,6 +81,40 @@
 					</tr>
 				</tbody>
 			</table>
+
+
+
+
+			<table class='table  text-left'>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Component</th>
+						<th>Owner</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+				<tr th:each="component: ${solution.components}">
+					<td>
+						<img style="height:60px; width:100px;" th:src="'/img/components/' + ${component.picture}"/>
+					</td>
+					<td>
+						<span th:text="${component.name}"/>
+					</td>
+					<td th:each="compOwner,iterStat : ${component.owners}"> 
+						<span th:text="${compOwner.name}"/>&nbsp;<span th:text="${compOwner.surname}"/><th:block th:if="${!iterStat.last}">,</th:block>
+					</td>
+					<td>
+						<a th:href="@{/component/details/{id}(id=${component.id})}" class='btn btn-primary'>Find Out More!</a>
+					</td>
+				</tr>
+				
+				
+				</tbody>
+			</table>
+
+
 		</div>
 	      <!-- /.row -->
 	
@@ -93,6 +128,8 @@
 		<script src="/vendor/popper/popper.min.js"></script>
 		<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript"></script>
+
+	});
 	
 	</body>
 </html>

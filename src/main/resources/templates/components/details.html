@@ -4,7 +4,7 @@
 	
 	<head>
 			
-		<title>Solution: <span th:text="${solution.name}"/></title>
+		<title>Solution: <span th:text="${component.name}"/></title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -21,22 +21,21 @@
 	      <header class="jumbotron my-4 header-dis text-justify">
 
 			<div style='float: left; margin-right: 20px;'>
-				<img th:src="${solution.picture}" height='100' width='110' />
+				<img th:src="'/img/components/' + ${component.picture}" height='100' width='110' />
 			</div>
 			<div>
 				<h3 class='display-6 font-weight-bold'>
-					<span th:text="${solution.name}" />
+					<span th:text="${component.name}" />
 				</h3>
 				<p class='lead'>
-					<div class="no-content" th:if="${solution.description == ''}">No description available</div>
-					<span th:text="${solution.description}" />
+					<span th:text="${component.description}" />
 				</p>
 			</div>
 			
 		</header>
 	
 	      <!-- Page Features -->
-	      <div class="row text-center solution-container">
+	      <div class="row text-center component-container">
 
 			<table class='table  text-left'>
 				<thead>
@@ -52,7 +51,7 @@
 				</thead>
 								
 				<tbody>
-					<tr th:each="owner : ${solution.owners}">
+					<tr th:each="owner : ${component.owners}">
 						<td><img style="height:60px; width:60px;" th:src="${owner.photo}"/></td>
 						<td>Owner</td>
 						<td><span th:text="${owner.name}"/>&nbsp;<span th:text="${owner.surname}"/></td>
@@ -61,7 +60,7 @@
 						<td><span th:text="${owner.country}"/></td>
 						<td><span th:text="${owner.department}"/></td>
 					</tr>
-					<tr th:each="deputy : ${solution.deputies}">
+					<tr th:each="deputy : ${component.deputies}">
 						<td><img style="height:60px; width:60px;" th:src="${deputy.photo}"/></td>
 						<td>Deputy</td>
 						<td><span th:text="${deputy.name}"/>&nbsp;<span th:text="${deputy.surname}"/></td>
@@ -70,7 +69,7 @@
 						<td><span th:text="${deputy.country}"/></td>
 						<td><span th:text="${deputy.department}"/></td>
 					</tr>
-					<tr th:each="bo : ${solution.bos}">
+					<tr th:each="bo : ${component.bos}">
 						<td><img style="height:60px; width:60px;" th:src="${bo.photo}"/></td>
 						<td>Business Owner</td>
 						<td><span th:text="${bo.name}"/>&nbsp;<span th:text="${bo.surname}"/></td>
@@ -85,7 +84,7 @@
 
 
 
-			<table class='table  text-left'>
+			<!--<table class='table  text-left'>
 				<thead>
 					<tr>
 						<th></th>
@@ -95,24 +94,24 @@
 				</thead>
 				<tbody>
 				
-				<tr th:each="component: ${solution.components}">
+				<tr th:each="module: ${component.modules}">
 					<td>
-						<img style="height:60px; width:100px;" th:src="'/img/components/' + ${component.picture}"/>
+						<img style="height:60px; width:100px;" th:src="${module.picture}"/>
 					</td>
 					<td>
-						<span th:text="${component.name}"/>
+						<span th:text="${module.name}"/>
 					</td>
-					<td th:each="compOwner,iterStat : ${component.owners}"> 
-						<span th:text="${compOwner.name}"/>&nbsp;<span th:text="${compOwner.surname}"/><th:block th:if="${!iterStat.last}">,</th:block>
+					<td th:each="modOwner,iterStat : ${module.owners}"> 
+						<span th:text="${modOwner.name}"/>&nbsp;<span th:text="${modOwner.surname}"/><th:block th:if="${!iterStat.last}">,</th:block>
 					</td>
 					<td>
-						<a th:href="@{/component/details/{id}(id=${component.id})}" class='btn btn-primary'>Find Out More!</a>
+						<a th:href="@{/module/details/{id}(id=${module.id})}" class='btn btn-primary'>Find Out More!</a>
 					</td>
 				</tr>
 				
 				
 				</tbody>
-			</table>
+			</table>-->
 
 
 		</div>
@@ -128,8 +127,6 @@
 		<script src="/vendor/popper/popper.min.js"></script>
 		<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript"></script>
-
-	});
 	
 	</body>
 </html>

@@ -1,9 +1,18 @@
 package roche.fghsp.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -62,8 +71,40 @@ public class Component implements Serializable {
 	
 	private String technical_capabilities;
 	
-	private String related_component_id;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "components")
+    private Set<Solution> solutions = new HashSet<Solution>();
 	
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_owner_component",
+            joinColumns = @JoinColumn(name = "component_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
+    )// referencedColumnName = "id" not needed here
+    private Set<Contact> owners = new HashSet<Contact>();
+    
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_deputy_component",
+            joinColumns = @JoinColumn(name = "component_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
+    )
+    private Set<Contact> deputies = new HashSet<Contact>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "is_bo_component",
+            joinColumns = @JoinColumn(name = "component_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id")
+    )
+    private Set<Contact> bos = new HashSet<Contact>();
+    
+//    @ManyToOne
+//    private Component related_component_id;
+//    
+//    @OneToMany(mappedBy="related_component_id") 
+//    private Set<Component> modules;
+    
 	public String getId() {
 		return id;
 	}
@@ -382,18 +423,54 @@ public class Component implements Serializable {
 		this.technical_capabilities = technical_capabilities;
 	}
 
-	/**
-	 * @return the related_component_id
-	 */
-	public String getRelated_component_id() {
-		return related_component_id;
+	public Set<Solution> getSolutions() {
+		return solutions;
 	}
 
-	/**
-	 * @param related_component_id the related_component_id to set
-	 */
-	public void setRelated_component_id(String related_component_id) {
-		this.related_component_id = related_component_id;
+	public void setSolutions(Set<Solution> solutions) {
+		this.solutions = solutions;
 	}
+
+	public Set<Contact> getOwners() {
+		return owners;
+	}
+
+	public void setOwners(Set<Contact> owners) {
+		this.owners = owners;
+	}
+
+	public Set<Contact> getDeputies() {
+		return deputies;
+	}
+
+	public void setDeputies(Set<Contact> deputies) {
+		this.deputies = deputies;
+	}
+
+	public Set<Contact> getBos() {
+		return bos;
+	}
+
+	public void setBos(Set<Contact> bos) {
+		this.bos = bos;
+	}
+
+//	/**
+//	 * @return the related_component_id
+//	 */
+//	public String getRelated_component_id() {
+//		return related_component_id;
+//	}
+//
+//	/**
+//	 * @param related_component_id the related_component_id to set
+//	 */
+//	public void setRelated_component_id(String related_component_id) {
+//		this.related_component_id = related_component_id;
+//	}
+
+	
+
+	
 	
 }

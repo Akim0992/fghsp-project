@@ -41,6 +41,17 @@ public class Contact implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bos")
     private Set<Solution> isBoSolutions = new HashSet<Solution>();
     
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "owners")
+    private Set<Component> isOwnerComponents = new HashSet<Component>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "deputies")
+    private Set<Component> isDeputyComponents = new HashSet<Component>();
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bos")
+    private Set<Component> isBoComponents = new HashSet<Component>();
+    
+
 	@NotNull
 	private String roche_id;
 	
@@ -181,6 +192,32 @@ public class Contact implements Serializable {
 	public void setIsBoSolutions(Set<Solution> isBoSolutions) {
 		this.isBoSolutions = isBoSolutions;
 	}
+
+	public Set<Component> getIsOwnerComponents() {
+		return isOwnerComponents;
+	}
+
+	public void setIsOwnerComponents(Set<Component> isOwnerComponents) {
+		this.isOwnerComponents = isOwnerComponents;
+	}
+
+	public Set<Component> getIsDeputyComponents() {
+		return isDeputyComponents;
+	}
+
+	public void setIsDeputyComponents(Set<Component> isDeputyComponents) {
+		this.isDeputyComponents = isDeputyComponents;
+	}
+
+	public Set<Component> getIsBoComponents() {
+		return isBoComponents;
+	}
+
+	public void setIsBoComponents(Set<Component> isBoComponents) {
+		this.isBoComponents = isBoComponents;
+	}
+
+
 
 	
 	

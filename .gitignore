@@ -6,3 +6,5 @@ WebContent/
 target/application.properties
 /target/
 
+target/classes/roche/fghsp/Application.class
+target/classes/roche/fghsp/Application.class
